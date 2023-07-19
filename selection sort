@@ -1,0 +1,68 @@
+Algorithm
+SELECTION SORT(arr, n)  
+  
+Step 1: Repeat Steps 2 and 3 for i = 0 to n-1  
+Step 2: CALL SMALLEST(arr, i, n, pos)  
+Step 3: SWAP arr[i] with arr[pos]  
+[END OF LOOP]  
+Step 4: EXIT  
+  
+SMALLEST (arr, i, n, pos)  
+Step 1: [INITIALIZE] SET SMALL = arr[i]  
+Step 2: [INITIALIZE] SET pos = i  
+Step 3: Repeat for j = i+1 to n  
+if (SMALL > arr[j])  
+     SET SMALL = arr[j]  
+SET pos = j  
+[END OF if]  
+[END OF LOOP]  
+Step 4: RETURN pos  
+
+// C program for implementation of selection sort
+#include <stdio.h>
+
+void swap(int *xp, int *yp)
+{
+	int temp = *xp;
+	*xp = *yp;
+	*yp = temp;
+}
+
+void selectionSort(int arr[], int n)
+{
+	int i, j, min_idx;
+
+	// One by one move boundary of unsorted subarray
+	for (i = 0; i < n-1; i++)
+	{
+		// Find the minimum element in unsorted array
+		min_idx = i;
+		for (j = i+1; j < n; j++)
+		if (arr[j] < arr[min_idx])
+			min_idx = j;
+
+		// Swap the found minimum element with the first element
+		if(min_idx != i)
+			swap(&arr[min_idx], &arr[i]);
+	}
+}
+
+/* Function to print an array */
+void printArray(int arr[], int size)
+{
+	int i;
+	for (i=0; i < size; i++)
+		printf("%d ", arr[i]);
+	printf("\n");
+}
+
+// Driver program to test above functions
+int main()
+{
+	int arr[] = {64, 25, 12, 22, 11};
+	int n = sizeof(arr)/sizeof(arr[0]);
+	selectionSort(arr, n);
+	printf("Sorted array: \n");
+	printArray(arr, n);
+	return 0;
+}
