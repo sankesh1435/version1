@@ -1,8 +1,13 @@
 The algorithm is based on the below facts. 
-
-If we subtract a smaller number from a larger one (we reduce a larger number), GCD doesn’t change. So if we keep subtracting repeatedly the larger of two, we end up with GCD.
-Now instead of subtraction, if we divide the smaller number, the algorithm stops when we find the remainder 0.
-Below is a recursive function to evaluate gcd using Euclid’s algorithm:
+2.// Function to return gcd of a and b
+3.if(a==0)
+  return b;
+  return gcd(b % a, a);
+4. end of if loop
+5.Initialize a and b
+6. Function call
+    printf("GCD(%d, %d) = %d\n", a, b, gcd(a, b));
+    a = 35, b = 10
 
 
 // C program to demonstrate Basic Euclidean Algorithm
